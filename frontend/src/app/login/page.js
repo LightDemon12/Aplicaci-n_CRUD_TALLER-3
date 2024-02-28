@@ -1,6 +1,5 @@
 'use client'
-import { useState } from "react"
-import { useRouter } from 'next/router'
+import { useState } from "react";
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -47,33 +46,37 @@ function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-purple-800">
             Inicia sesión
           </h2>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
+          <div className="mb-6 w-full">
+            <label className="block mb-2 text-sm font-medium text-purple-800">Username</label>
             <input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="user" required />
+              id="email" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="user" required />
           </div>
-          <div className="mb-6">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+          <div className="mb-6 w-full">
+            <label className="block mb-2 text-sm font-medium text-purple-800">Your password</label>
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+              type="password" id="password" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
           </div>
-          <div className="flex items-start mb-6">
-            <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">Iniciar sesión</button>
+          <div className="flex items-start mb-6 w-full justify-center">
+            <button type="submit" className="bg-yellow-300 text-black font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out hover:bg-yellow-400 hover:text-white hover:py-3 hover:px-5">Iniciar sesión</button>
           </div>
           {error && <p className="text-red-500">{error}</p>} {}
-          <button onClick={handleRedirectToRegistro}>Registro</button>
+          <button onClick={handleRedirectToRegistro} className="border border-yellow-300 bg-yellow-300 text-black font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out hover:bg-yellow-400 hover:text-white hover:py-3 hover:px-5">
+    Registro
+</button>
+
+
         </form>
       </div>
     </div>
@@ -81,3 +84,8 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+
+
+
+

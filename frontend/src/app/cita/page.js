@@ -55,30 +55,31 @@ function CitaPage() {
     };
 
     return (
-      <div className="flex h-screen flex-col gap-4 mx-auto justify-center">
-        <h1 className="text-3xl font-extrabold mb-4 text-center">Crear Cita en UHospital</h1>
+      <div className="flex h-screen flex-col gap-4 mx-auto justify-center bg-white">
+        <h1 className="text-3xl font-extrabold mb-4 text-center text-purple-600">Solicitar Revisión</h1>
+
         <div className="flex justify-between items-center">
-          <button
-            className="absolute top-4 right-4 inline-flex items-center rounded-lg bg-cyan-700 px-3 py-2 text-center text-sm font-medium text-white hover-bg-cyan-800 focus-outline-none focus-ring-4 focus-ring-cyan-300 dark-bg-cyan-600 dark-hover-bg-cyan-700 dark-focus-ring-cyan-800"
-            onClick={() => {
-              window.location.href = '/patient';
-            }}
-          >
-            <p>Menu Principal</p>
-          </button>
+        <button
+    className="absolute top-4 right-4 inline-flex items-center rounded-lg bg-yellow-300 px-3 py-2 text-center text-sm font-medium text-black hover:bg-yellow-400 focus-outline-none focus-ring-4 focus-ring-yellow-300"
+    onClick={() => {
+        window.location.href = '/patient';
+    }}
+>
+    <p>Menu Principal</p>
+</button>
+
         </div>
-        <form onSubmit={handleSubmit} className="mx-auto"> {}
+        <form onSubmit={handleSubmit} className="mx-auto">
           <div className="mx-auto">
-            <Label htmlFor="patientId" value="Id del paciente" />
+          <Label htmlFor="sexo" value="Usuario" style={{ color: 'purple' }} />
             <TextInput
               id="patientId"
               name="patientId"
               value={patientId}
-              disabled 
-            />
+              disabled />
           </div>
           <div className="mx-auto">
-            <Label htmlFor="dateTime" value="Fecha (DD/DD/DDDD)" />
+          <Label htmlFor="dateTime" value="Fecha (DD/DD/DDDD)" style={{ color: 'purple' }} />
             <TextInput
               id="dateTime"
               type="text"
@@ -88,7 +89,7 @@ function CitaPage() {
             />
           </div>
           <div className="mx-auto">
-            <Label htmlFor="reason" value="Motivo de la cita" />
+          <Label htmlFor="reason" value="Motivo de la Revisión" style={{ color: 'purple' }} />
             <TextInput
               id="reason"
               type="text"
@@ -97,10 +98,12 @@ function CitaPage() {
               className="max-w-md"
             />
           </div>
-          <Button type="submit">Guardar Cita</Button>
+          <Button type="submit" className="bg-yellow-300 text-black font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out hover:bg-yellow-400 hover:text-white hover:py-3 hover:px-5">Guardar solicitud</Button>
+
         </form>
       </div>
     );
 }
 
 export default CitaPage;
+

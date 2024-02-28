@@ -3,7 +3,7 @@ const citas = [
     id: 1,
     patientId: 'Ejemplo123',
     dateTime: '15/11/2023',
-    reason: 'Cita de ejemplo',
+    reason: 'Revisión de ejemplo',
     status: 'pendiente',
     doctor: "pendiente",
   },

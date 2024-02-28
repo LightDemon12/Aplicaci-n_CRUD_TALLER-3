@@ -21,22 +21,22 @@ function estadoPage() {
 
     return (
         
-        <div className="flex flex-col items-center justify-center h-screen">
-            <h1 className="text-3xl font-semibold mb-4">Citas en el sistema</h1>
-            <div className="overflow-x-auto w-full">
+        <div className="flex flex-col items-center justify-center h-screen bg-white">
+            <h1 className="text-3xl font-semibold mb-4 text-purple-600">Citas en el sistema</h1>
             <button
-        className="absolute top-4 right-4 inline-flex items-center rounded-lg bg-cyan-700 px-3 py-2 text-center text-sm font-medium text-white hover-bg-cyan-800 focus-outline-none focus-ring-4 focus-ring-cyan-300 dark-bg-cyan-600 dark-hover-bg-cyan-700 dark-focus-ring-cyan-800"
+        className="absolute top-4 right-4 inline-flex items-center rounded-lg bg-yellow-300 px-3 py-2 text-center text-sm font-medium text-black hover:bg-yellow-400 focus-outline-none focus-ring-4 focus-ring-yellow-300"
         onClick={() => {
           window.location.href = '/patient';
         }}
       >
         <p>Menu Principal</p>
       </button>
+                <div className="overflow-x-auto w-full">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs bg-gray-200 dark:bg-gray-700">
                         <tr>
                             <th scope="col" className="px-6 py-3">
-                                Paciente
+                                Estudiante
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Fecha y Hora
@@ -47,34 +47,28 @@ function estadoPage() {
                             <th scope="col" className="px-6 py-3">
                                 Estado
                             </th>
-                            <th scope="col" className="px-6 py-3">
-                                doctor
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-    {citas
-        .filter((cita) => cita.patientId === username)
-        .map((cita) => (
-            <tr key={cita.id} className="bg-white dark:bg-gray-800">
-                <td className="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
-                    {cita.patientId}
-                </td>
-                <td className="px-6 py-4">
-                    {cita.dateTime}
-                </td>
-                <td className="px-6 py-4">
-                    {cita.reason}
-                </td>
-                <td className="px-6 py-4">
-                    {cita.status}
-                </td>
-                {}
-                <td className="px-6 py-4">
-                    {cita.doctorStatus}
-                </td>
-            </tr>
-        ))}
+                    {citas
+    .filter((cita) => cita.patientId === username && cita.status !== "rechazada")
+    .map((cita) => (
+        <tr key={cita.id} className="bg-white dark:bg-gray-800">
+            <td className="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
+                {cita.patientId}
+            </td>
+            <td className="px-6 py-4">
+                {cita.dateTime}
+            </td>
+            <td className="px-6 py-4">
+                {cita.reason}
+            </td>
+            <td className="px-6 py-4">
+                {cita.status}
+            </td>
+        </tr>
+    ))}
+
 </tbody>
                 </table>
             </div>

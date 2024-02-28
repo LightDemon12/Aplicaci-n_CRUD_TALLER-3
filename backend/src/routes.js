@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
 
 router.post('/login', (req, res) => {
  
-
     const { username, password } = req.body
 
     const user = findUser(username, password)

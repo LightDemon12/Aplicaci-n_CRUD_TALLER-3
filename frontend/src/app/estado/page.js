@@ -2,9 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 
+
+
 function estadoPage() {
     const [citas, setCitas] = useState([]);
-    const [selectedDoctor, setSelectedDoctor] = useState(""); 
 
     useEffect(() => {
         const fetchCitas = async () => {
@@ -20,12 +21,6 @@ function estadoPage() {
     }, []);
 
     const handleAceptarCita = async (citaId) => {
-       
-        if (selectedDoctor === "") {
-            alert('Por favor, selecciona un médico antes de aceptar la cita.');
-            return;
-        }
-    
         const response = await fetch('http://localhost:4000/cambiar-cita', {
             method: 'POST',
             headers: {
@@ -33,15 +28,14 @@ function estadoPage() {
             },
             body: JSON.stringify({
                 citaId,
-                nuevoEstado: 'aceptada',
-                doctor: selectedDoctor
+                nuevoEstado: 'aceptada'
             })
         });
-    
+
         if (response.ok) {
             const data = await response.json();
             if (data.success) {
-               
+                // Actualizar estado de la cita localmente si es necesario
             } else {
                 alert(`Error al aceptar la cita: ${data.message}`);
             }
@@ -51,13 +45,6 @@ function estadoPage() {
     };
     
     const handleRechazarCita = async (citaId) => {
-        
-        if (selectedDoctor === "") {
-            alert('Por favor, selecciona un médico antes de rechazar la cita.');
-            return;
-        }
-    
-       
         const response = await fetch('http://localhost:4000/cambiar-cita', {
             method: 'POST',
             headers: {
@@ -65,15 +52,14 @@ function estadoPage() {
             },
             body: JSON.stringify({
                 citaId,
-                nuevoEstado: 'rechazada',
-                doctor: selectedDoctor 
+                nuevoEstado: 'rechazada'
             })
         });
-    
+
         if (response.ok) {
             const data = await response.json();
             if (data.success) {
-             
+                // Actualizar estado de la cita localmente si es necesario
             } else {
                 alert(`Error al rechazar la cita: ${data.message}`);
             }
@@ -81,29 +67,10 @@ function estadoPage() {
             alert('Error al realizar la solicitud.');
         }
     };
-    const handleLoginRedirect = () => {
-        window.location.href = '/login';
-    };
-    return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <h1 className="text-3xl font-semibold mb-4">Citas en el sistema</h1>
-            <button onClick={handleLoginRedirect} className="bg-blue-500 text-white px-4 py-2 rounded-full mt-2 hover:bg-blue-600">
-                Ir a Iniciar Sesión
-            </button>
-            {}
-            <div className="mb-4">
-                <label className="block text-gray-700 dark:text-gray-300">Selecciona un médico:</label>
-                <select
-    onChange={(e) => setSelectedDoctor(e.target.value)}
-    value={selectedDoctor}
-    className="w-full p-2 border rounded-md"
->
-    <option value="">-- Selecciona un médico --</option>
-    <option value="doctor1">Dr. Juan López</option>
-    <option value="doctor2">Dr. Carlos González</option>
-</select>
 
-            </div>
+    return (
+        <div className="flex flex-col items-center justify-center h-screen bg-white">
+            <h1 className="text-3xl font-semibold mb-4 text-purple-600">Revisiónes en el sistema</h1>
             <div className="overflow-x-auto w-full">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs bg-gray-200 dark:bg-gray-700">
@@ -163,8 +130,18 @@ function estadoPage() {
                     </tbody>
                 </table>
             </div>
+            <button
+                className="bg-yellow-300 text-black font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out hover:bg-yellow-400 hover:text-white hover:py-3 hover:px-5 mt-4"
+                onClick={() => {
+                    window.location.href = '/login';
+                }}
+            >
+                Regresar
+            </button>
         </div>
     );
 }
 
 export default estadoPage;
+
+

@@ -25,8 +25,7 @@ function RegistroPage() {
       password: contrasena,
       phone: telefono,
     };
-
-   
+    
     const response = await fetch('http://localhost:4000/register-patient', {
       method: 'POST',
       headers: {
@@ -49,10 +48,10 @@ function RegistroPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen bg-white">
       <form className="max-w-md flex flex-col gap-4" onSubmit={handleSubmit}>
         <div>
-          <Label htmlFor="nombre" value="Nombre" />
+          <Label htmlFor="nombre" value="Nombre" style={{ color: 'purple' }} />
           <TextInput
             id="nombre"
             placeholder="Nombre"
@@ -61,7 +60,7 @@ function RegistroPage() {
           />
         </div>
         <div>
-          <Label htmlFor="apellido" value="Apellido" />
+          <Label htmlFor="apellido" value="Apellido" style={{ color: 'purple' }} />
           <TextInput
             id="apellido"
             placeholder="Apellido"
@@ -70,16 +69,16 @@ function RegistroPage() {
           />
         </div>
         <div>
-  <Label htmlFor="telefono" value="Número de teléfono" />
-  <TextInput
-    id="telefono"
-    placeholder="Número de teléfono"
-    value={telefono}
-    onChange={(e) => setTelefono(e.target.value)}
-  />
-</div>
+          <Label htmlFor="telefono" value="Número de teléfono" style={{ color: 'purple' }} />
+          <TextInput
+            id="telefono"
+            placeholder="Número de teléfono"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+          />
+        </div>
         <div>
-          <Label htmlFor="nombreUsuario" value="Nombre de usuario (único)" />
+          <Label htmlFor="nombreUsuario" value="Nombre de usuario (único)" style={{ color: 'purple' }} />
           <TextInput
             id="nombreUsuario"
             placeholder="Nombre de usuario"
@@ -88,7 +87,7 @@ function RegistroPage() {
           />
         </div>
         <div>
-          <Label htmlFor="fechaNacimiento" value="Fecha de nacimiento" />
+          <Label htmlFor="fechaNacimiento" value="Fecha de nacimiento" style={{ color: 'purple' }} />
           <TextInput
             id="fechaNacimiento"
             placeholder="Fecha de nacimiento"
@@ -97,7 +96,7 @@ function RegistroPage() {
           />
         </div>
         <div>
-          <Label htmlFor="sexo" value="Sexo" />
+          <Label htmlFor="sexo" value="Sexo" style={{ color: 'purple' }} />
           <TextInput
             id="sexo"
             placeholder="Sexo"
@@ -106,7 +105,7 @@ function RegistroPage() {
           />
         </div>
         <div>
-          <Label htmlFor="contrasena" value="Contraseña (al menos 8 caracteres)" />
+          <Label htmlFor="contrasena" value="Contraseña (al menos 8 caracteres)" style={{ color: 'purple' }} />
           <TextInput
             id="contrasena"
             type="password"
@@ -116,7 +115,7 @@ function RegistroPage() {
             onChange={(e) => setContrasena(e.target.value)}
           />
         </div>
-        <Button type="submit">Registrar paciente</Button>
+        <Button type="submit" className="bg-yellow-300 text-black font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out hover:bg-yellow-400 hover:text-white hover:py-3 hover:px-5">Registrar paciente</Button>
       </form>
     </div>
   );
